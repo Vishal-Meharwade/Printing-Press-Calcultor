@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Printing Press Bill Calculator</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Add your existing CSS styles here */
+
+    #receiptModal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    #receiptModalContent {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    
+  <div class="container">
+    <h1>Printing Press Bill Calculator</h1>
+    <form id="billForm">
+      <div class="form-group">
+        <input type="text" id="partyName" required />
+        <label for="partyName">Party Name</label>
+        <div id="partyNameError" class="error-message">Please enter the party name.</div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <select id="size" required>
+            <option value="" disabled selected></option>
+            <option>A4</option>
+            <option>A3</option>
+            <option>Legal</option>
+          </select>
+          <label for="size">Size</label>
+          <div id="sizeError" class="error-message">Please select a size.</div>
+        </div>
+        <div class="form-group">
+          <select id="type" required>
+            <option value="" disabled selected></option>
+            <option>1+1</option>
+            <option>1+2</option>
+            <option>1+3</option>
+          </select>
+          <label for="type">Type</label>
+          <div id="typeError" class="error-message">Please select a type.</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <input type="number" id="quantity" required />
+          <label for="quantity">Quantity</label>
+          <div id="quantityError" class="error-message">Please enter a valid quantity.</div>
+        </div>
+        <div class="form-group">
+          <select id="paper" required>
+            <option value="" disabled selected></option>
+            <option>GVG</option>
+            <option>Maplitho</option>
+            <option>SPB</option>
+            <option>Other</option>
+          </select>
+          <label for="paper">Paper</label>
+          <div id="paperError" class="error-message">Please select a paper type.</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <select id="colors" required>
+            <option value="" disabled selected></option>
+            <option>1</option>
+            <option>2</option>
+            <option>More</option>
+          </select>
+          <label for="colors">Colors</label>
+          <div id="colorsError" class="error-message">Please select a number of colors.</div>
+        </div>
+        <div class="form-group">
+          <input type="number" id="misc" />
+          <label for="misc">Miscellaneous</label>
+          <div id="miscError" class="error-message"></div>
+        </div>
+      </div>
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="printing" />
+          <!-- <label for="printing">Printing</label> -->
+          <p for="printing">Printing</p>
+        </div>
+        <div class="checkbox-item">
+          <input type="checkbox" id="binding" />
+          <!-- <label for="binding">Binding</label> -->
+          <p for="binding">Binding</p>
+        </div>
+        <div class="checkbox-item">
+          <input type="checkbox" id="dtp" />
+          <!-- <label for="dtp">DTP</label> -->
+          <p for="dtp">DTP</p>
+        </div>
+      </div>
+      <!-- <button type="button" id="calculateButton">Calculate Total</button> -->
+      <!-- <button type="button" id="saveButton">Save Data</button> -->
+    </form>
+    <div id="totalAmount" class="total-amount">Total Amount: ₹0</div>
+  </div>
+
+  <!-- Receipt Preview Modal -->
+  <div id="receiptModal">
+    <div id="receiptModalContent">
+      <span class="close" id="closeReceiptButton">&times;</span>
+      <div id="receiptPreview"></div>
+      <button id="confirmSaveButton">Save</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
